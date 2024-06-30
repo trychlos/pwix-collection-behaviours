@@ -1,6 +1,6 @@
 Package.describe({
     name: 'pwix:collection-behaviours',
-    version: '2.0.3',
+    version: '2.0.4-rc',
     summary: 'Define and attach behaviours to collections',
     git: 'https://github.com/trychlos/pwix-collection-behaviours'
 });
