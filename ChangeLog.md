@@ -2,11 +2,12 @@
 
 ## ChangeLog
 
-### 2.0.4-rc
+### 2.1.0-rc
 
     Release date: 
 
     - Add (commented) debug code
+    - Remove Meteor 1.x compatibility and coffeescript 1.x dependency, thus bumping minor candidate version number
 
 ### 2.0.3
 
