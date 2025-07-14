@@ -6,7 +6,7 @@
 
     Release date: 
 
-    - 
+    - Add (commented) debug code
 
 ### 2.0.3
 
@@ -19,7 +19,7 @@
     Release date: 2024- 6-13
 
     - Update README
-    - move the Github repository to trychlos organization
+    - move the Github repository to trychlos tenant
 
 ### 2.0.1
 

@@ -11,6 +11,9 @@ share.attach = attach = (behaviours, options...) ->
   check behaviours, Match.OneOf Function, [Match.OneOf Function, String], Object
   , String
 
+  # 'this' is a Mongo.Collection
+  #console.debug "pwix:collection-behaviours attach()ing '"+behaviours+"' behaviour on '"+this._name+"' collection with", options, "options"
+
   if Match.test behaviours, String
     name = behaviours.toLowerCase()
     behaviourObject = definedBehaviours[name]
