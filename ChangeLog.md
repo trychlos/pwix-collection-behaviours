@@ -2,9 +2,9 @@
 
 ## ChangeLog
 
-### 2.1.0-rc
+### 2.1.0
 
-    Release date: 
+    Release date: 2026- 2- 2
 
     - Add (commented) debug code
     - Remove Meteor 1.x compatibility and coffeescript 1.x dependency, thus bumping minor candidate version number
@@ -42,4 +42,4 @@
 
 ---
 P. Wieser
-- Last updated on 2024, Jun. 30th
+- Last updated on 2026, Feb. 2nd
