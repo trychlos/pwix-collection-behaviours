@@ -2,11 +2,11 @@
 
 ## ChangeLog
 
-### 2.1.1-rc.0
+### 2.2.0-rc.0
 
     Release date: 
 
-    - 
+    - Migrate coffeescript code to pure javascript, thus bumping minor candidate version number
 
 ### 2.1.0
 

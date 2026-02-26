@@ -10,7 +10,8 @@
 
 |   Id | Date       | Description and comment(s) |
 | ---: | :---       | :---                       |
-|    1 |  |  |
+|    1 | 2026- 2-26 | coffeescript is migrated: remove it in a future version |
+|    2 |  |  |
 
 ---
 ## Done

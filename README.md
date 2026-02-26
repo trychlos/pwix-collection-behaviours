@@ -24,6 +24,8 @@ This Meteor package is installable with the usual command:
 
 ### Define a behaviour
 
+Defining a behaviour means attaching a management function to its name.
+
 ```js
     import { CollectionBehaviours } from 'meteor/pwix:collection-behaviours';
 
@@ -44,6 +46,8 @@ This Meteor package is installable with the usual command:
 ```
 
 ### Attach behaviours
+
+Once a behaviour is defined, you can attach it to any collection.
 
 ```js
     // Attach a behavour using the collection identifier
