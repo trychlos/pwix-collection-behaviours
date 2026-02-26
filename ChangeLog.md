@@ -7,6 +7,7 @@
     Release date: 
 
     - Migrate coffeescript code to pure javascript, thus bumping minor candidate version number
+    - Use pwix:logger universal logger
 
 ### 2.1.0
 

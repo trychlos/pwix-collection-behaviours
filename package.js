@@ -11,7 +11,8 @@ Package.onUse( function( api ){
         'check',
         //'coffeescript@2.7.0',
         'ecmascript',
-        'mongo'
+        'mongo',
+        'pwix:logger@1.0.0-rc'
     ]);
     api.export([
         'CollectionBehaviours'

@@ -3,8 +3,10 @@
  */
 
 import { check, Match } from 'meteor/check';
+import { Logger } from 'meteor/pwix:logger';
 
 let definedBehaviours = {};
+const logger = Logger.get();
 
 let messages = {
     attachAborted( name, collectionName ){
@@ -29,7 +31,7 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
     check( behaviours, Match.OneOf( Function, [Match.OneOf( Function, String )], Object, String ));
 
     //# 'this' is a Mongo.Collection
-    //#console.debug "pwix:collection-behaviours attach()ing '"+behaviours+"' behaviour on '"+this._name+"' collection with", options, "options"
+    //#logger.debug "pwix:collection-behaviours attach()ing '"+behaviours+"' behaviour on '"+this._name+"' collection with", options, "options"
     let name;
     let behaviourObject;
 
@@ -40,14 +42,14 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
         behaviourObject = definedBehaviours[name];
 
         if( !behaviourObject ){
-            console.warn( messages.attachFailed( name ));
+            logger.warn( messages.attachFailed( name ));
             return;
         }
 
         behaviourObject.collections = behaviourObject.collections || [];
 
         if( behaviourObject.collections.includes( this._name ) && !options?.replace ){
-            console.warn( messages.attachAborted( name, this._name ));
+            logger.warn( messages.attachAborted( name, this._name ));
             return;
         }
 
@@ -80,14 +82,14 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
                 behaviourObject = definedBehaviours[name];
 
                 if( !behaviourObject ){
-                    console.warn( messages.attachFailed( name ));
+                    logger.warn( messages.attachFailed( name ));
                     continue;
                 }
 
                 behaviourObject.collections = behaviourObject.collections || [];
 
                 if( behaviourObject.collections.includes( this._name )){
-                    console.warn( messages.attachAborted( name, this._name ));
+                    logger.warn( messages.attachAborted( name, this._name ));
                     continue;
                 }
 
@@ -117,14 +119,14 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
             behaviourObject = definedBehaviours[name];
 
             if( !behaviourObject ){
-                console.warn( messages.attachFailed( name ));
+                logger.warn( messages.attachFailed( name ));
                 continue;
             }
 
             behaviourObject.collections = behaviourObject.collections || [];
 
             if( behaviourObject.collections.includes( this._name )){
-                console.warn( messages.attachAborted( name, this._name ));
+                logger.warn( messages.attachAborted( name, this._name ));
                 continue;
             }
 
@@ -139,13 +141,13 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
                 behaviour.call( context, options );
                 behaviourObject.collections.push( this._name );
             } else {
-                console.warn( messages.attachFailed( name ));
+                logger.warn( messages.attachFailed( name ));
             }
         }
         return;
     }
 
-    console.error( 'Attach failed, unknown reason' );
+    logger.error( 'Attach failed, unknown reason' );
 };
 
 /*
@@ -192,13 +194,13 @@ CollectionBehaviours.configure = function( nameOrObject, options ){
                 behaviourObject.options = behaviourOptions;
             }
             else {
-                console.warn( messages.behaviourNotFound( name ));
+                logger.warn( messages.behaviourNotFound( name ));
             }
         }
         return;
     }
 
-    console.error( 'Configure failed, unknown reason' );
+    logger.error( 'Configure failed, unknown reason' );
 };
 
 CollectionBehaviours.define = function( name, behaviour, options ){
@@ -214,7 +216,7 @@ CollectionBehaviours.define = function( name, behaviour, options ){
     behaviourObject = definedBehaviours[name];
 
     if( behaviourObject && !options?.replace ){
-        console.warn( messages.behaviourDefined( name ));
+        logger.warn( messages.behaviourDefined( name ));
     } else {
         definedBehaviours[name] = { behaviour: behaviour };
     }
