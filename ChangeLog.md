@@ -2,9 +2,9 @@
 
 ## ChangeLog
 
-### 2.2.0-rc.0
+### 2.2.0
 
-    Release date: 
+    Release date: 2026- 5- 2
 
     - Migrate coffeescript code to pure javascript, thus bumping minor candidate version number
     - Use pwix:logger universal logger
@@ -49,4 +49,4 @@
 
 ---
 P. Wieser
-- Last updated on 2026, Feb. 2nd
+- Last updated on 2026, May. 2nd
