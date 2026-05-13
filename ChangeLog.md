@@ -6,7 +6,7 @@
 
     Release date: 
 
-    - 
+    - Defer the behaviours installation until the waitUntil() requisite is satisfied
 
 ### 2.2.0
 

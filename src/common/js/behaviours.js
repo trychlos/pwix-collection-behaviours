@@ -31,7 +31,7 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
     check( behaviours, Match.OneOf( Function, [Match.OneOf( Function, String )], Object, String ));
 
     //# 'this' is a Mongo.Collection
-    //#logger.debug "pwix:collection-behaviours attach()ing '"+behaviours+"' behaviour on '"+this._name+"' collection with", options, "options"
+    //logger.debug( 'attach()ing "'+behaviours+'" behaviour on "'+this._name+'" collection with', options, 'options' );
     let name;
     let behaviourObject;
 
@@ -62,7 +62,20 @@ CollectionBehaviours._share._attach = function( behaviours, options ){
             options: behaviourObject?.options || {}
         };
 
-        behaviours.apply( context, [ options ] );
+        const run = function( collection, definition, tries=0 ){
+            if( definition.waitUntil && !definition.waitUntil( collection )){
+                if( tries > 10 ){
+                    logger.warning( collection._name, 'behaviour prerequisites not met', definition.name );
+                    return;
+                }
+                Meteor.defer(() => run( collection, definition, options, tries+1 ));
+                return;
+            }
+
+            behaviours.apply( context, [ options ] );
+        };
+
+        run( this, context.options );
 
         behaviourObject = behaviourObject || {};
         behaviourObject.collections = behaviourObject.collections || [];
@@ -218,6 +231,6 @@ CollectionBehaviours.define = function( name, behaviour, options ){
     if( behaviourObject && !options?.replace ){
         logger.warn( messages.behaviourDefined( name ));
     } else {
-        definedBehaviours[name] = { behaviour: behaviour };
+        definedBehaviours[name] = { behaviour, options };
     }
 };
